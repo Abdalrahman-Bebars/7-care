@@ -12,15 +12,12 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Body(),
-      floatingActionButton:FloatingActionButton.extended(
-        onPressed: (){},
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
         label: Text("Covid Vaccine"),
         icon: Icon(Icons.medical_services),
         backgroundColor: kPrimaryColor,
-
-
       ),
-
     );
   }
 }

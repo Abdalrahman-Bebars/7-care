@@ -1,21 +1,22 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seven_care/Screens/search_result.dart';
 
 import '../constants.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
-  const HeaderWithSearchBox({
+  HeaderWithSearchBox({
     Key? key,
     required this.size,
   }) : super(key: key);
 
   final Size size;
+  final searching = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: kDefaultPadding*2.5),
+      margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
       height: size.height * .2,
       child: Stack(
         children: [
@@ -23,7 +24,7 @@ class HeaderWithSearchBox extends StatelessWidget {
             padding: EdgeInsets.only(
               left: kDefaultPadding,
               right: kDefaultPadding,
-              bottom: 36+kDefaultPadding,
+              bottom: 36 + kDefaultPadding,
             ),
             height: size.height * .2 - 27,
             decoration: BoxDecoration(
@@ -38,25 +39,18 @@ class HeaderWithSearchBox extends StatelessWidget {
                 Text(
                   "Welcome!",
                   style: Theme.of(context).textTheme.headline5!.copyWith(
-                      color: Colors.white,fontWeight: FontWeight.bold
-                  ),
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 Spacer(),
                 Card(
-
-                    child:Container(
-                      decoration:BoxDecoration(shape: BoxShape.circle),
-                      height: 40,
-                      width: 40,
-                      child: Image.asset("assets/care.jpg"),
-
-                    )
-
-                ),
-
+                    child: Container(
+                  decoration: BoxDecoration(shape: BoxShape.circle),
+                  height: 40,
+                  width: 40,
+                  child: Image.asset("assets/care.jpg"),
+                )),
               ],
             ),
-
           ),
           Positioned(
               bottom: 0,
@@ -70,19 +64,31 @@ class HeaderWithSearchBox extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [BoxShadow(
-                    offset: Offset(0,10),
-                    blurRadius: 50,
-                    color: kTextColor.withOpacity(.23),
-                  )
-                  ],) ,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 10),
+                      blurRadius: 50,
+                      color: kTextColor.withOpacity(.23),
+                    )
+                  ],
+                ),
                 child: Row(
                   children: [
                     Expanded(
-                      child:
-                      TextField(
+                      child: TextField(
+                        controller: searching,
                         decoration: InputDecoration(
-                          suffixIcon: Icon(Icons.search,color: Colors.red,),
+                          prefixIcon: IconButton(
+                            color: Colors.red,
+                            icon: Icon(Icons.search),
+                            iconSize: 30.0,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => SearchResult()),
+                              );
+                            },
+                          ),
                           hintText: "Search",
                           hintStyle: TextStyle(
                             color: kTextColor.withOpacity(.5),
@@ -92,11 +98,9 @@ class HeaderWithSearchBox extends StatelessWidget {
                         ),
                       ),
                     ),
-
                   ],
                 ),
-              )
-          )
+              ))
         ],
       ),
     );

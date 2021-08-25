@@ -11,8 +11,8 @@ class TestData extends StatelessWidget {
     return Container(
       child: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("Doctors").snapshots(),
-        builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
-          if (!snapshot.hasData){
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -20,10 +20,10 @@ class TestData extends StatelessWidget {
 
           return ListView(
             scrollDirection: Axis.horizontal,
-            children: snapshot.data!.docs.map((document){
+            children: snapshot.data!.docs.map((document) {
               return MyCard(
-                  content: (document["name"]) ,
-                );
+                content: (document["name"]),
+              );
             }).toList(),
           );
         },

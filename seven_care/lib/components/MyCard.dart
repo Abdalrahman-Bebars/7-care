@@ -14,7 +14,7 @@ class _MyCardState extends State<MyCard> {
     return Card(
       child: Container(
         height: 100,
-        width: 50,
+        width: 100,
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Center(child: Text(widget.content),),

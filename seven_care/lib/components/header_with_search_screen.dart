@@ -44,10 +44,12 @@ class HeaderWithSearchBox extends StatelessWidget {
                 Spacer(),
                 Card(
 
-                    child:SizedBox(
-                      height: 30,
-                      width: 30,
+                    child:Container(
+                      decoration:BoxDecoration(shape: BoxShape.circle),
+                      height: 40,
+                      width: 40,
                       child: Image.asset("assets/care.jpg"),
+
                     )
 
                 ),

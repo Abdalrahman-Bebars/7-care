@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:seven_care/constants.dart';
 
 import 'MyCard.dart';
+import 'TestDataWidget.dart';
 import 'TitleWithMoreButton.dart';
 import 'header_with_search_screen.dart';
 
@@ -19,26 +20,10 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20),
             child: SizedBox(
               height: 110,
-                child:ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-                    MyCard(),
-
-                  ],
-                )
-
+              child: TestData(),
             ),
-          )
+          ),
+
 
         ],
       ),

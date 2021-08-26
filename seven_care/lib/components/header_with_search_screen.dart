@@ -75,26 +75,31 @@ class HeaderWithSearchBox extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: TextField(
-                        controller: searching,
-                        decoration: InputDecoration(
-                          prefixIcon: IconButton(
-                            color: Colors.red,
-                            icon: Icon(Icons.search),
-                            iconSize: 30.0,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => SearchResult()),
-                              );
-                            },
+                      child: GestureDetector(
+                        onTap: () {
+                          showSearch(context: context, delegate: DataSearch());
+                        },
+                        child: Container(
+                          color: Colors.transparent,
+                          child: IgnorePointer(
+                            child: TextField(
+                              controller: searching,
+                              decoration: InputDecoration(
+                                prefixIcon: IconButton(
+                                  color: Colors.red,
+                                  icon: Icon(Icons.search),
+                                  iconSize: 30.0,
+                                  onPressed: () {},
+                                ),
+                                hintText: "Search",
+                                hintStyle: TextStyle(
+                                  color: kTextColor.withOpacity(.5),
+                                ),
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                              ),
+                            ),
                           ),
-                          hintText: "Search",
-                          hintStyle: TextStyle(
-                            color: kTextColor.withOpacity(.5),
-                          ),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
                         ),
                       ),
                     ),

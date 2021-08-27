@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20),
             child: SizedBox(
               height: 110,
-              child: TestData(),
+              child: TestData(height: 100,width: 100,),
             ),
           ),
 

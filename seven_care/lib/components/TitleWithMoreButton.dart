@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seven_care/Screens/DoctorsScreen.dart';
+import 'package:seven_care/utils.dart';
 
 import '../constants.dart';
 
 class TitleWithButton extends StatelessWidget {
   const TitleWithButton({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -18,7 +20,9 @@ class TitleWithButton extends StatelessWidget {
           Spacer(),
           FlatButton(
             color: kPrimaryColor,
-            onPressed: (){},
+            onPressed: (){
+              Pushpage(context, DoctorsScreen());
+            },
             child: Text("More",style: TextStyle(color: Colors.white),),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),)
@@ -31,7 +35,7 @@ class TitleWithButton extends StatelessWidget {
 
 class TitleWithCustomUnderline extends StatelessWidget {
   const TitleWithCustomUnderline({
-    Key? key, required this.text,
+    Key key,  this.text,
   }) : super(key: key);
   final String text;
 

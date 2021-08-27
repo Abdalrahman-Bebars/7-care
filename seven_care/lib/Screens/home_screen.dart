@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_care/components/body.dart';
+import 'package:seven_care/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
 
@@ -13,7 +15,9 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Body(),
       floatingActionButton:FloatingActionButton.extended(
-        onPressed: (){},
+        onPressed: (){
+            Launch_url("https://egcovac.mohp.gov.eg/#/registration");
+        },
         label: Text("Covid Vaccine"),
         icon: Icon(Icons.medical_services),
         backgroundColor: kPrimaryColor,

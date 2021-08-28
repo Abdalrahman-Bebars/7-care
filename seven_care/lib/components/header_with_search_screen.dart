@@ -77,7 +77,10 @@ class HeaderWithSearchBox extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          showSearch(context: context, delegate: DataSearch());
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchMenu()),
+                          );
                         },
                         child: Container(
                           color: Colors.transparent,

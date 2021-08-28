@@ -41,6 +41,12 @@ class _SearchMenuState extends State<SearchMenu> {
             );
           }).toList(),
           onChanged: (newValueSelected) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      SecondResult(secondfilter: currentselected)),
+            );
             setState(() {
               isExecuted = true;
               this.currentselected = newValueSelected.toString();
@@ -48,28 +54,35 @@ class _SearchMenuState extends State<SearchMenu> {
           },
           value: currentselected,
         ),
-        isExecuted
-            ? StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection('Doctors')
-                    .where('spec', isEqualTo: currentselected)
-                    .snapshots(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  return new ListView(
-                      children: snapshot.data!.docs
-                          .map((doc) => new ListTile(
-                              title: new Text(doc["name"]),
-                              subtitle: new Text(doc["spec"].toString())))
-                          .toList());
-                })
-            : Container(
-                child: Center(
-                  child: Text('select speciality'),
-                ),
-              ),
         Text('test text')
       ]),
+    );
+  }
+}
+
+class SecondResult extends StatelessWidget {
+  var secondfilter;
+
+  SecondResult({this.secondfilter = ''});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('this is $secondfilter page')),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('Doctors')
+              .where('spec', isEqualTo: secondfilter)
+              .snapshots(),
+          builder: (BuildContext context,
+              AsyncSnapshot<QuerySnapshot> snapshot) {
+            return new ListView(
+                children: snapshot.data!.docs
+                    .map((doc) => new ListTile(
+                    title: new Text(doc["name"]),
+                    subtitle: new Text(doc["spec"].toString())))
+                    .toList());
+          }),
     );
   }
 }

@@ -1,9 +1,9 @@
-//import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_care/components/MyCard.dart';
+import 'package:seven_care/screens/Clinic.dart';
+import 'package:seven_care/utils.dart';
 
 class TestData extends StatelessWidget {
  double height ;
@@ -24,11 +24,16 @@ class TestData extends StatelessWidget {
           return ListView(
             scrollDirection: Axis.horizontal,
             children: snapshot.data.docs.map((document){
-              return MyCard(
-                  content: (document["name"]),
-                h: height,
-                w: width,
-                );
+              return GestureDetector(
+                onTap: (){
+                  Pushpage(context, Clinic());
+                },
+                child: MyCard(
+                    content: (document["name"]),
+                  h: height,
+                  w: width,
+                  ),
+              );
             }).toList(),
           );
         },

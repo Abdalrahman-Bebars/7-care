@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "840568175454",
+    "project_id": "care-142e4",
+    "storage_bucket": "care-142e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840568175454:android:6afc74229ddae5a71eadcf",
+        "android_client_info": {
+          "package_name": "com.team7.Seven_Care.seven_care.host"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840568175454-uugsl8mu9cpou6cjfvve6sn94dt05s0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUytmEnowptTtj1FdW82PFqJskoR5z3pI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840568175454-uugsl8mu9cpou6cjfvve6sn94dt05s0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

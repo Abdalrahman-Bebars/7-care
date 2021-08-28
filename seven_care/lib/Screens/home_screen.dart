@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_care/components/body.dart';
 import 'package:seven_care/utils.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../constants.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -2,8 +2,8 @@
     package="com.u7care.seven_care">
    <application
 
-        android:label="seven_care"
-        android:icon="@mipmap/ic_launcher">
+        android:label="7 care"
+        android:icon="@mipmap/care">
 
         <activity
             android:name=".MainActivity"

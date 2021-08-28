@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_care/Screens/DoctorsScreen.dart';
 import 'package:seven_care/utils.dart';
-
 import '../constants.dart';
 
 class TitleWithButton extends StatelessWidget {

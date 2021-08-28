@@ -14,11 +14,6 @@ class DoctorsScreen extends StatefulWidget {
 }
 
 class _DoctorsScreenState extends State<DoctorsScreen> {
-
-  @override
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +21,17 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
         title: Text("Doctors"),
         backgroundColor: kPrimaryColor,
       ),
-      body:StreamBuilder(
+      body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("Doctors").snapshots(),
-        builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
-          if (!snapshot.hasData){
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
 
           return ListView(
-            children: snapshot.data.docs.map((document){
+            children: snapshot.data.docs.map((document) {
               return MyCard(
                 content: (document["name"]),
                 h: 50,

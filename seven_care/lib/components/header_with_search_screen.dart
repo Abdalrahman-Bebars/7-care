@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seven_care/components/searchdropmenu.dart';
 import '../constants.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
   const HeaderWithSearchBox({
     Key key,
-     this.size,
+    this.size,
   }) : super(key: key);
 
   final Size size;
@@ -13,7 +14,7 @@ class HeaderWithSearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: kDefaultPadding*2.5),
+      margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
       height: size.height * .2,
       child: Stack(
         children: [
@@ -21,7 +22,7 @@ class HeaderWithSearchBox extends StatelessWidget {
             padding: EdgeInsets.only(
               left: kDefaultPadding,
               right: kDefaultPadding,
-              bottom: 36+kDefaultPadding,
+              bottom: 36 + kDefaultPadding,
             ),
             height: size.height * .2 - 27,
             decoration: BoxDecoration(
@@ -36,25 +37,24 @@ class HeaderWithSearchBox extends StatelessWidget {
                 Text(
                   "Welcome!",
                   style: Theme.of(context).textTheme.headline5.copyWith(
-                      color: Colors.white,fontWeight: FontWeight.bold
-                  ),
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 Spacer(),
                 Card(
-
-                    child:Container(
-                      decoration:BoxDecoration(shape: BoxShape.circle),
-                      height: 40,
-                      width: 40,
-                      child: Image.asset("assets/care.jpg"),
-
-                    )
-
-                ),
-
+                    child: Container(
+                  decoration: BoxDecoration(shape: BoxShape.circle),
+                  height: 40,
+                  width: 40,
+                  child: Image.asset("assets/care.jpg"),
+                )),
               ],
             ),
-
+          ),
+          Positioned(
+            top: 50,
+            left: 20,
+            child: Text('Please select a speciality:', style: Theme.of(context).textTheme.headline5.copyWith(
+                color: Colors.white),),
           ),
           Positioned(
               bottom: 0,
@@ -63,40 +63,35 @@ class HeaderWithSearchBox extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 height: 54,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [BoxShadow(
-                    offset: Offset(0,10),
-                    blurRadius: 50,
-                    color: kTextColor.withOpacity(.23),
-                  )
-                  ],) ,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child:
-                      TextField(
-                        decoration: InputDecoration(
-                          suffixIcon: Icon(Icons.search,color: Colors.red,),
-                          hintText: "Search",
-                          hintStyle: TextStyle(
-                            color: kTextColor.withOpacity(.5),
-                          ),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 10),
+                      blurRadius: 40,
+                      color: kTextColor.withOpacity(.23),
+                    )
                   ],
                 ),
-              )
-          )
+                child: SearchDropDownButton(),
+              ))
         ],
       ),
     );
   }
 }
+
+// TextField(
+// decoration: InputDecoration(
+// suffixIcon: Icon(Icons.search,color: Colors.red,),
+// hintText: "Search",
+// hintStyle: TextStyle(
+// color: kTextColor.withOpacity(.5),
+// ),
+// enabledBorder: InputBorder.none,
+// focusedBorder: InputBorder.none,
+// ),
+// )

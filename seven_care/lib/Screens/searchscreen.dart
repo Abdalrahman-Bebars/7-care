@@ -38,7 +38,11 @@ class SecondResult extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Clinic(name:doc["name"]),
+                                  builder: (context) => Clinic(
+                                    name: doc["name"],
+                                    lat: doc["lat"],
+                                    lng: doc["lng"],
+                                  ),
                                 ));
                           },
                           child: Card(

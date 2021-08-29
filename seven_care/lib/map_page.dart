@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Mymap extends StatefulWidget {
- // Geo cords;
- // MapSample(this.cords);
+ double lat;
+ double lng;
+ Mymap({this.lat,this.lng});
   @override
   State<Mymap> createState() => MymapState();
 }
@@ -21,7 +22,7 @@ class MymapState extends State<Mymap> {
     super.initState();
     _KAddress =   CameraPosition(
         bearing: 192.8334901395799,
-       // target: LatLng(double.parse(widget.cords.lat),double.parse(widget.cords.lng)),
+        target: LatLng(widget.lat,widget.lng),
         tilt: 59.440717697143555,
         zoom: 19.151926040649414);
   }

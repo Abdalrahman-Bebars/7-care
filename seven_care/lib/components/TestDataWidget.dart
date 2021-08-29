@@ -6,16 +6,19 @@ import 'package:seven_care/screens/Clinic.dart';
 import 'package:seven_care/utils.dart';
 
 class TestData extends StatelessWidget {
- double height ;
- double width ;
- TestData({this.height,this.width});
+  double height;
+  double width;
+  TestData({this.height, this.width});
   @override
   Widget build(BuildContext context) {
     return Container(
       child: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("Doctors").orderBy('rating').snapshots(),
-        builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
-          if (!snapshot.hasData){
+        stream: FirebaseFirestore.instance
+            .collection("Doctors")
+            .orderBy('rating')
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -23,16 +26,22 @@ class TestData extends StatelessWidget {
 
           return ListView(
             scrollDirection: Axis.horizontal,
-            children: snapshot.data.docs.map((document){
+            children: snapshot.data.docs.map((document) {
               return GestureDetector(
-                onTap: (){
-                  Pushpage(context, Clinic(name : document["name"].toString(),));
+                onTap: () {
+                  Pushpage(
+                      context,
+                      Clinic(
+                        name: document["name"].toString(),
+                        lat: document["lat"],
+                        lng: document["lng"],
+                      ));
                 },
                 child: MyCard(
-                    content: (document["name"]+"\n"+document["spec"]),
+                  content: (document["name"] + "\n" + document["spec"]),
                   h: height,
                   w: width,
-                  ),
+                ),
               );
             }).toList(),
           );

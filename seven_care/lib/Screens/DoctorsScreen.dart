@@ -36,7 +36,6 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
           }
 
           return ListView(
-
             children: snapshot.data.docs.map((document) {
               return InkWell(
                 child: MyCard(
@@ -44,8 +43,13 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
                   h: 50,
                   w: 200,
                 ),
-                onTap: (){
-                  Pushpage(context, Clinic(name: document["name"].toString(),));
+                onTap: () {
+                  Pushpage(
+                      context,
+                      Clinic(
+                          name: document["name"].toString(),
+                          lat: document["lat"],
+                          lng: document["lng"]));
                 },
               );
             }).toList(),

@@ -26,10 +26,10 @@ class TestData extends StatelessWidget {
             children: snapshot.data.docs.map((document){
               return GestureDetector(
                 onTap: (){
-                  Pushpage(context, Clinic());
+                  Pushpage(context, Clinic(name : document["name"].toString(),));
                 },
                 child: MyCard(
-                    content: (document["name"]),
+                    content: (document["name"]+"\n"+document["spec"]),
                   h: height,
                   w: width,
                   ),

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:seven_care/components/Clinic_header.dart';
 
 class Clinic_Body extends StatefulWidget {
+  String name;
+  Clinic_Body({this.name});
   @override
   _Clinic_BodyState createState() => _Clinic_BodyState();
 }
@@ -17,6 +19,7 @@ class _Clinic_BodyState extends State<Clinic_Body> {
       body: ListView(
         children: [
           Clinic_header(
+            name:widget.name,
             size: size,
           ),
           Padding(

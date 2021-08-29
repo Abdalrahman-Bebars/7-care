@@ -26,7 +26,11 @@ class SecondResult extends StatelessWidget {
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) return Center(child: new Container(child: CircularProgressIndicator(),));
+            if (!snapshot.hasData)
+              return Center(
+                  child: new Container(
+                child: CircularProgressIndicator(),
+              ));
             return new ListView(
                 children: snapshot.data.docs
                     .map((doc) => InkWell(
@@ -34,7 +38,7 @@ class SecondResult extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Clinic(),
+                                  builder: (context) => Clinic(name:doc["name"]),
                                 ));
                           },
                           child: Card(

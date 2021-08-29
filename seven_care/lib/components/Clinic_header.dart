@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:seven_care/components/Clinic_data.dart';
 
 import '../constants.dart';
 
 class Clinic_header extends StatelessWidget {
+  final String name;
+
   const Clinic_header({
     Key key,
     this.size,
+    this.name,
   }) : super(key: key);
 
   final Size size;
@@ -36,34 +40,7 @@ class Clinic_header extends StatelessWidget {
             )
           ],
         ),
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Dr. Mohamed's clinic",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              "Heart surgeon",
-              style: TextStyle(fontSize: 20, color: Colors.white)
-            ),
-            Text(
-                "Address: Mansoura",
-                style: TextStyle(fontSize: 20, color: Colors.white)
-            ),
-            Text(
-              "Fees: 200 LE ",
-                style: TextStyle(fontSize: 20, color: Colors.white)
-            ),
-            Text(
-                "Rating: 4.5",
-                style: TextStyle(fontSize: 20, color: Colors.white)
-            ),
-          ],
-        ),
+        child:Clinic_data(name:name,)
       ),
     );
   }

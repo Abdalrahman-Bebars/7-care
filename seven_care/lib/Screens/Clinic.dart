@@ -7,6 +7,8 @@ import 'package:seven_care/utils.dart';
 import '../constants.dart';
 
 class Clinic extends StatefulWidget {
+  String name;
+  Clinic({this.name});
   @override
   _ClinicState createState() => _ClinicState();
 }
@@ -19,7 +21,7 @@ class _ClinicState extends State<Clinic> {
         backgroundColor: kPrimaryColor,
         elevation: 0,
       ),
-      body: Clinic_Body(),
+      body: Clinic_Body(name: widget.name,),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

@@ -13,7 +13,7 @@ class TestData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("Doctors").snapshots(),
+        stream: FirebaseFirestore.instance.collection("Doctors").orderBy('rating').snapshots(),
         builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
           if (!snapshot.hasData){
             return Center(

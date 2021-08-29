@@ -5,6 +5,7 @@ import 'package:seven_care/components/customRow.dart';
 import 'package:seven_care/components/genderButton.dart';
 import 'package:seven_care/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:email_validator/email_validator.dart';
 import '../utils.dart';
 import 'home_screen.dart';
 
@@ -18,6 +19,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   var _formKey = GlobalKey<FormState>();
   bool showPassword = true;
+  bool confirmPassword = true;
   bool isChecked = false;
   TextEditingController myEmailController = TextEditingController();
   TextEditingController myPasswordController = TextEditingController();
@@ -29,6 +31,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     try {
       myUser = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: myEmailController.text, password: myPasswordController.text);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('newEmail', myEmailController.text);
+      Pushpage(context, HomeScreen(user: myUser));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -44,6 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
+        autovalidateMode: AutovalidateMode.always,
         key: _formKey,
         child: SingleChildScrollView(
           child: Padding(
@@ -83,8 +89,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 TextFormField(
                   controller: myEmailController,
-                  validator: (String value) =>
-                      value.isEmpty ? 'Email can\'t be blank' : null,
+                  validator: (value) => EmailValidator.validate(value)
+                      ? null
+                      : "Please enter a valid email",
                   keyboardType: TextInputType.emailAddress,
                   decoration: kTextFieldDecoration.copyWith(
                     labelText: 'Email',
@@ -99,8 +106,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 TextFormField(
                   controller: myPasswordController,
-                  validator: (String value) =>
-                      value.isEmpty ? 'You Should Enter Your Password' : null,
+                  validator: (String value) {
+                    if (value.isEmpty) return 'You Should Enter Your Password';
+                    if (RegExp(
+                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
+                        .hasMatch(value)) {
+                      return null;
+                    }
+                    return 'Use Special\, UpperCase\, Chars and Numeric Value';
+                  },
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: showPassword,
                   decoration: kTextFieldDecoration.copyWith(
@@ -125,9 +139,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: showPassword,
-                  validator: (String value) =>
-                      value.isEmpty ? 'You Should Confirm Your Password' : null,
+                  obscureText: confirmPassword,
+                  validator: (String value) {
+                    if (value.isEmpty)
+                      return 'You should confirm your password';
+                    if (value != myPasswordController.text)
+                      return 'not matches';
+                    return null;
+                  },
                   decoration: kTextFieldDecoration.copyWith(
                       labelText: 'Confirm Password',
                       prefixIcon: Icon(
@@ -137,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              showPassword = !showPassword;
+                              confirmPassword = !confirmPassword;
                             });
                           },
                           icon: Icon(
@@ -164,10 +183,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onPress: () async {
                     if (_formKey.currentState.validate()) {
                       register();
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setString('newEmail', myEmailController.text);
-                      Pushpage(context, HomeScreen(user: myUser));
                     }
                     setState(() {});
                   },

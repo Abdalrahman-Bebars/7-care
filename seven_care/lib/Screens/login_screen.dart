@@ -29,6 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       userCredential = await auth.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('newEmail', emailController.text);
+      Pushpage(context, HomeScreen(user: userCredential));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -100,10 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPress: () async {
                   if (formKey.currentState.validate()) {
                     login();
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.setString('newEmail', emailController.text);
-                    Pushpage(context, HomeScreen(user: userCredential));
                   }
                   setState(() {});
                 },

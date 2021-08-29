@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.remove('newEmail');
+                await prefs.remove('newEmail');
                 FirebaseAuth auth = FirebaseAuth.instance;
                 auth.signOut();
                 Pushpage(context, WelcomeScreen());

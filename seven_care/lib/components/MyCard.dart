@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class MyCard extends StatefulWidget {
   String content;
@@ -15,13 +16,22 @@ class _MyCardState extends State<MyCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: HexColor("#FF4848"),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20)
+      ),
       child: Container(
         height: widget.h,
         width: widget.w,
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Center(child: Text(widget.content),),
+        child: Stack(
+          children: [
+            Padding(
+                child: Center(child: Text(widget.content),),padding: EdgeInsets.all(8.0),),
+          ],
+
+
         ),
+
       ),
     );
   }

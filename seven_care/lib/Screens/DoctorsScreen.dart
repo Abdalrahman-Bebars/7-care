@@ -39,7 +39,7 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
             children: snapshot.data.docs.map((document) {
               return InkWell(
                 child: MyCard(
-                  content: (document["name"]),
+                  content: ("Dr. "+document["name"]),
                   h: 50,
                   w: 200,
                 ),

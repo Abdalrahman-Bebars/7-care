@@ -38,9 +38,10 @@ class TestData extends StatelessWidget {
                       ));
                 },
                 child: MyCard(
-                  content: (document["name"] + "\n" + document["spec"]),
+                  content: ("Dr. "+document["name"] + "\n\n"+"Spec: "+ document["spec"]),
                   h: height,
                   w: width,
+
                 ),
               );
             }).toList(),

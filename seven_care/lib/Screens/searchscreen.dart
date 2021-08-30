@@ -28,8 +28,9 @@ class SecondResult extends StatelessWidget {
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData)
               return Center(
+
                   child: new Container(
-                child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(),
               ));
             return new ListView(
                 children: snapshot.data.docs
@@ -49,7 +50,7 @@ class SecondResult extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             child: new ListTile(
-                              leading: Icon(
+                                  leading: Icon(
                                 Icons.medical_services_outlined,
                               ),
                               trailing: Text(

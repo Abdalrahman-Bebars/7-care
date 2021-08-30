@@ -1,15 +1,9 @@
-//import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:seven_care/DoctorFirebaseServices.dart';
-import 'package:seven_care/components/Clinic_data.dart';
 import 'package:seven_care/components/MyCard.dart';
-import 'package:seven_care/components/TestDataWidget.dart';
 import 'package:seven_care/constants.dart';
 import 'package:seven_care/utils.dart';
-
 import 'Clinic.dart';
 
 class DoctorsScreen extends StatefulWidget {
@@ -39,7 +33,7 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
             children: snapshot.data.docs.map((document) {
               return InkWell(
                 child: MyCard(
-                  content: ("Dr. "+document["name"]),
+                  content: ("Dr. " + document["name"]),
                   h: 50,
                   w: 200,
                 ),

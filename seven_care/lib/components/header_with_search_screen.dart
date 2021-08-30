@@ -51,9 +51,9 @@ class HeaderWithSearchBox extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 50,
+            top: 60,
             left: 20,
-            child: Text('Please select a speciality:', style: Theme.of(context).textTheme.headline5.copyWith(
+            child: Text('Please select a specialization:', style: Theme.of(context).textTheme.headline5.copyWith(
                 color: Colors.white),),
           ),
           Positioned(

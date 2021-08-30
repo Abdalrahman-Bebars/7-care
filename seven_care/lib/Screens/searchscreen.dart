@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'Clinic.dart';
 
 class SecondResult extends StatelessWidget {
@@ -61,7 +60,7 @@ class SecondResult extends StatelessWidget {
                                 textScaleFactor: 1.2,
                               ),
                               title: new Text('Dr.' + doc["name"]),
-                              subtitle: new Text('Speciality: ' +
+                              subtitle: new Text('Specialization: ' +
                                   doc["spec"] +
                                   '\n' +
                                   'Address: ' +

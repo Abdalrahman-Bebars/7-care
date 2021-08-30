@@ -5,7 +5,6 @@ import 'package:seven_care/components/customButton.dart';
 import 'package:seven_care/components/customRow.dart';
 import 'package:seven_care/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../utils.dart';
 
 class LoginScreen extends StatefulWidget {
